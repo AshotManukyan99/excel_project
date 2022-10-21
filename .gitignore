@@ -1,43 +1,20 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-**/node_modules
-# roadhog-api-doc ignore
-/src/utils/request-temp.js
-_roadhog-api-doc
-
-# production
-/dist
-/.vscode
-
-# misc
-.DS_Store
-npm-debug.log*
-yarn-error.log
-
-/coverage
-.idea
-yarn.lock
-package-lock.json
-*bak
-.vscode
-
-# visual studio code
-.history
-*.log
-functions/*
-.temp/**
-
-# umi
-.umi
-.umi-production
-
-# env
+/node_modules
+/public/hot
+/public/storage
+/public/js
+/public/css
+/public/font
+/public/uploads/products/test
+/storage/*.key
+/vendor
 .env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+composer-setup.php
+composer.phar
+.idea
 
-# screenshot
-screenshot
-.firebase
-.eslintcache
-
-build
