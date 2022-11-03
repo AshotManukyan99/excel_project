@@ -1,3 +1,5 @@
+import * as events from "events";
+
 class Dom {
     constructor(selector) {
         // app
@@ -16,6 +18,14 @@ class Dom {
     clear() {
         this.html('')
         return this
+    }
+
+    on(evenType, callback) {
+        this.$el.addEventListener(evenType, callback)
+    }
+
+    off(evenType, callback) {
+        this.$el.removeEventListener(evenType, callback)
     }
 
     append(node) {
