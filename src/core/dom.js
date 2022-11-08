@@ -56,6 +56,10 @@ class Dom {
         return document.querySelectorAll(selector)
     }
 
+    css(styles = {}) {
+
+    }
+
 }
 
 // event.target
