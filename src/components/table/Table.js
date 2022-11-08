@@ -32,11 +32,16 @@ export class Table extends ExcelComponent {
                     const delta = event.pageX - coords.right
                     const resizeCount = coords.width + delta
                     $parent.$el.style.width = resizeCount + 'px'
+                    $parent.css({
+                        width: resizeCount + 'px'
+                    })
                     cells.forEach(el => el.style.width = resizeCount + "px")
                 } else {
                     const delta = event.pageY - coords.bottom
                     const resizeCount = coords.height + delta
-                    $parent.$el.style.height = resizeCount + 'px'
+                    $parent.css({
+                        height: resizeCount + 'px'
+                    })
                 }
             }
 
