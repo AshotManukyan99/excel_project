@@ -1,6 +1,7 @@
 import {ExcelComponent} from "@core/ExcelComponent";
 import {createTable} from "@/components/table/table.template";
-import {$} from "@core/dom";
+import {resizeHandler} from "@/components/table/table.resize";
+import {shouldResize} from "@/components/table/table.function";
 
 export class Table extends ExcelComponent {
     static className = 'excel__table'
@@ -16,39 +17,8 @@ export class Table extends ExcelComponent {
     }
 
     onMousedown(event) {
-        if (event.target.dataset.resize) {
-            const $resizer = $(event.target)
-            // (Bad) when you need to add new elements it will be a problem
-            // const $parent = $resizer.$el.parentNode
-            // (Bad) using a selector is already bad (may change)
-            // const $parent = $resizer.$el.closest()
-            const $parent = $resizer.closest('[data-type="resizable"]')
-            const coords = $parent.getCoords()
-            const type = $resizer.data.resize
-            const cells = this.$root.findAll(`[data-col="${$parent.data.col}"]`)
-
-            document.onmousemove = event => {
-                if (type === 'col') {
-                    const delta = event.pageX - coords.right
-                    const resizeCount = coords.width + delta
-                    $parent.$el.style.width = resizeCount + 'px'
-                    $parent.css({
-                        width: resizeCount + 'px'
-                    })
-                    cells.forEach(el => el.style.width = resizeCount + "px")
-                } else {
-                    const delta = event.pageY - coords.bottom
-                    const resizeCount = coords.height + delta
-                    $parent.css({
-                        height: resizeCount + 'px'
-                    })
-                }
-            }
-
-            document.onmouseup = () => {
-                document.onmousemove = null
-            }
-
+        if (shouldResize(event)) {
+            resizeHandler(this.$root, event)
         }
     }
 }
