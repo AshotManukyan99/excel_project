@@ -1,5 +1,3 @@
-import * as events from "events";
-
 class Dom {
     constructor(selector) {
         // app
@@ -44,6 +42,7 @@ class Dom {
         return this.$el.dataset
     }
 
+
     closest(selector) {
         return $(this.$el.closest(selector))
     }
@@ -52,8 +51,20 @@ class Dom {
         return this.$el.getBoundingClientRect()
     }
 
+    find(selector) {
+        return $(this.$el.querySelector(selector))
+    }
+
     findAll(selector) {
-        return document.querySelectorAll(selector)
+        return this.$el.querySelectorAll(selector)
+    }
+
+    addClass(className) {
+        return this.$el.classList.add(className)
+    }
+
+    removeClass(className) {
+        return this.$el.classList.remove(className)
     }
 
     css(styles = {}) {
