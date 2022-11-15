@@ -26,6 +26,11 @@ class Dom {
         this.$el.removeEventListener(evenType, callback)
     }
 
+    focus() {
+        this.$el.focus()
+        return this
+    }
+
     append(node) {
         if (node instanceof Dom) {
             node = node.$el
